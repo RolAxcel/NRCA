@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensures full viewport height */
+    background-image: url(/images/logo3.png);
+    background-repeat: no-repeat;
+    background-size: 600px;
+    background-position: center center;
+    font-family: 'roboto', serif;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    height: 250px;
+    width: 500px;
+    text-align: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.37);
+    backdrop-filter: blur(3.6px);
+    -webkit-backdrop-filter: blur(20.6px);
+    z-index: 1;
+    position: relative;
+}
+
+/* Animated Border */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 16px;
+    border: 5px solid transparent;
+    background: linear-gradient(45deg, rgb(0, 0, 0), #3b3b3b, #818181, rgb(173, 173, 173), #131313, #111111);
+    background-size: 300% 300%;
+    animation: border-rotate 4s linear infinite;
+    z-index: -1;
+    mask: linear-gradient(white 0 0) padding-box, linear-gradient(white 0 0);
+    mask-composite: exclude;
+}
+
+/* Border animation */
+@keyframes border-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container h1 {
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.container .inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+    height: 200px;
+    gap: 30px;
+    padding: 0 50px;
+    margin-top: 15px;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#password {
+    width: 100%;
+    padding-right: 40px; /* Space for the toggle button */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #faf3f3;
+}
+
+.toggle-password:focus {
+    outline: none;
+}
+
+input {
+    border: 0;
+    background-color: #1d1d1d;
+    outline: none;
+    height: 40px;
+    border-radius: 6px;
+    padding-left: 10px;
+    color: aliceblue;
+}
+
+input::placeholder {
+    color: wheat;
+}
+
+input[type="button"] {
+    margin-top: 10px;
+    color: rgb(219, 219, 219);
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 800;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, rgb(34, 34, 34), #030303, #818181, rgb(66, 66, 66), #131313, #111111);
+    background-size: 300% 300%;
+    animation: glowing 3.5s infinite linear;
+}
+
+@keyframes glowing {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

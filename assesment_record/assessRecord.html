@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NRCA</title>
+        <link rel="stylesheet" href="assessRecord.css">
+        <link rel="stylesheet" href="func.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+            rel='stylesheet'>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+        <script type="module" src="/database/retri_del.js" defer></script>
+    </head>
+    <body onload="displayTaxRecords()">
+        <div id="taxRecords"></div>
+        <!-- Drawer Sidebar -->
+    <div id="drawer" class="sidebar">
+        <ul>
+            <li><a href="#" onclick="window.print()">Print</a></li>
+            <li><a href="#"><button class="items" id="saveButton">Save</button></a></li>
+            <li><a href="#"><button class="items" id="addedData">View Data</button></a></li>
+            <li class="items"><a href="#">2 MILLION BELOW</a></li>
+        </ul>
+        <!-- Logout Button Positioned to the Right -->
+        <div class="logout-btn">
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </div>
+        <header>
+            <div class="drawer-icon" onclick="toggleDrawer()">
+                <i class="fas fa-bars"></i> <!-- Drawer Icon -->
+            </div>
+            <div class="logo"><img src="/images/logo3.png" alt></div>
+            <div class="logo"><img src="/images/logo1.png" alt
+                    style="mix-blend-mode: multiply;"></div>
+            <div class="headName">
+                <h4> Republic of the Philipines</h4>
+                <h4>CITY OF OROQUIETA</h4>
+                <h2>ASSESSMENT RECORD</h2>
+            </div>
+            <div class="logo"><img src="/images/logo4.png" alt></div>
+            <div class="logo"><img src="/images/logo2.png" alt></div>
+        </header>
+
+        <div class="client-details">
+            <div class="details">
+                <h5>Trade Name:</h5>
+                <h5>Address<:</h5>
+                <h5>Gen. Mngr.:</h5>
+                <h5>Address:</h5>
+            </div>
+            <div class="textBoxes">
+                <input id="tradeNameInput" class="input1" placeholder="Enter Trade Name" name="tradeName" type="text">
+                <input id="addressInput" class="input1" placeholder="Enter Address" name="address" type="text"> <!-- Fixed Typo -->
+                <input id="genManagerInput" class="input1" placeholder="Enter General Manager Name" name="genMngr" type="text">
+                <input id="address2Input" class="input1" placeholder="Enter Address" name="address2" type="text">
+            </div>
+            <div class="date-applied">
+                <div class="date">
+                    <h5>Date Applied:</h5>
+                    <h5>Type:</h5>
+                </div>
+                <div class="applied">
+                    <input id="dateInput" class="input" placeholder="Enter Date" name="date" type="date">
+                    <h5>Non-Resident</h5>
+                    <h5>Contractor</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="taxes-details">
+            <div class="texes">
+                <h4>tax/fee</h4>
+                <h4 class="yeah">Kind of Business</h4>
+                <h4>Tax Amount</h4>
+            </div>
+            <div class="inTaxes">
+                <h4>TAX ON CONTRACTOR</h4>
+                <div class="contractor-none">
+                    <h4>NON-RESIDENT</h4>
+                    <h4>CONTRACTOR</h4>
+                </div>
+                <div class="amount">
+                    <h4 id="amnt">₱ 0.00</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="regulary-head">
+            <div class="regulary-fees">
+                <div class="fees" style="color: snow;">
+                    <h4>REGULATORY FEES</h4>
+                </div>
+                <div class="regulary-amount">
+                    <div class="regulary">
+                        <h4>-Mayor's Permit fee</h4>
+                        <h4>-Solid Waste Mgnt User's Fee</h4>
+                        <h4>-Police Clearance Fee</h4>
+                        <h4>-Medical Certificate Fee</h4>
+                        <h4>-Health Certificate Fee</h4>
+                        <h4>-Sanitary Permit Fee</h4>
+                        <h4>-Fire Inspection Fee</h4>
+                    </div>
+                    <div class="amount">
+                        <h4 id="uwu" style="color: white; margin-right: 40px;">₱ 0.00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="container1">
+                <div class="tax con">
+                    <h4>Business Tax</h4>
+                    <h4 id="businessTax" class="amnt">₱ 0.00</h4>
+                </div>
+                <div class="regu-fees con">
+                    <h4>Regulatory Fees</h4>
+                    <h4 id="regulatoryFees" class="amnt">₱ 0.00</h4>
+                </div>
+                <div class="changes con">
+                    <h4>Other Changes</h4>
+                </div>
+                <div class="assessment con">
+                    <h4>Assessment</h4>
+                    <h4 id="assessment" class="amnt">₱ 0.00</h4>
+                </div>
+            </div>
+        </section>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <input type="search" name="search" id="searchData" placeholder="Search entries...">
+                <div id="total-entries-container">
+                    <p id="total-entries">Total Entries: 0</p>
+                </div>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+
+        <div id="deletedModal" class="modal">
+            <div class="modal-content">
+                <span class="close-deleted">&times;</span>
+                <h2>Deleted Entries</h2>
+                <div id="deleted-modal-body">
+                    <!-- Deleted entries will be dynamically populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPUTATION SECTION -->
+        <section>
+            <div class="container2">
+                <div class="computation">
+                    <h3>Computation</h3>
+                </div>
+                <div class="waragud">
+                    <div class="contract-amount">
+                        <div class="cadc">
+                            <h4>Contract Amount Due to Contractor</h4>
+                            <textarea id="notes" class="textarea"></textarea>
+                            <div class="txable">
+                                <h4>Total Taxable Gross Receipt</h4>
+                            </div>
+                            <div class="total-tax">
+                                <h4>2,000,000 above (Pae.E, Sec.S2 of the Local Tax Code)</h4>
+                            </div>
+                            <h4>75% of 1% in exces of 2,000,000 is (Par.E, Sec.52 of the Local Tax Code)</h4>
+                            <h4>Total Tax Assessment Subject to Situs of Tax</h4>
+                            <h4>Multiplied by the tax rate for None-Resident Contractor(Sec.52 par. E, D-situs)</h4>
+                            <h4>Business Tax Due</h4>
+                            <h4>Add: Regulatory Fees</h4>
+                            <h4>TOTAL TAX AND REGULATORY FEES DUE TO THE CITY</h4>
+                        </div>
+                        <div class="input-tax">
+                            <label for="number" class="search-label">
+                                <input id="payment" type="number" name="number"
+                                    required placeholder="Type here...">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="calculation">
+                        <div class="tax-computation">
+                            <h4 id="tax-com1" class="tax-com1">0.00</h4>
+                            <h4 id="tax-com2" class="tax-com2 underLine">0.00</h4>
+                            <h4 id="tax-com3" class="tax-com3">₱ -0.00</h4>
+                        </div>
+                        <div class="tax-formula">
+                            <h4 id="tax-for1" class="tax-for1">₱ 0.00</h4>
+                            <h4 id="tax-for2" class="tax-for2 underLine">₱ -0.00</h4>
+                            <h4 id="tax-for3" class="tax-for3">₱ 0.00</h4>
+                            <h4 id="tax-for4" class="tax-for4 underLine">x 70%</h4>
+                            <h4 id="tax-for5" class="tax-for5">₱ 0.00</h4>
+                            <h4 id="tax-for6" class="tax-for6">0.00</h4>
+                            <h4 id="equals" class="equals">₱ 0.00</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="printedName">
+                <div class="correctedBy">
+                    <h3>CERTIFIED BY:</h3>
+                </div>
+                <div class="overPrintedName">
+                    <div class="alignment">
+                        <h3>CELY B. SANGCALAN</h3>
+                        <h4>local treasurer operation officer iv</h4>
+                        <h4>(chief, licenses and fees division)</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script type="module" src="/database/retri_del.js" defer></script>
+        <script src="logout.js"></script>
+        <script src="resize.js"></script>
+        <script src="/database/search.js"></script>
+        <script src="assessRecord.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    </body>
+</html>

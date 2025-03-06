@@ -1,0 +1,794 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    font-family: "Roboto", serif;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: snow;
+    text-align: center;
+}
+
+header .logo img {
+    width: 130px;
+}
+
+header .headName:nth-of-type(2) {
+    font-weight: 900;
+}
+
+.client-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    color: snow;
+    margin-top: 2rem;
+}
+
+.client-details .details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    font-size: 20px;
+    width: 200px;
+}
+
+.client-details .date {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.client-details .applied {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.client-details .textBoxes {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -140px;
+    gap: 7px;
+}
+
+.date-applied {
+    display: flex;
+    width: 450px;
+    justify-content: space-between;
+}
+ 
+.input1 {
+    margin-top: 8px;
+    border-radius: 10px;
+    outline: 2px solid #a2a6a8;
+    border: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #d6f1ff;
+    outline-offset: 3px;
+    padding: 5px 20px;
+    transition: all 0.2s ease;
+    width: 400px;
+  }
+  .input1:nth-of-type(1), .input:nth-of-type(1) {
+    margin-top: 0;
+  }
+
+  .date {
+    width: 10px;
+  }
+  
+  .input1:hover {
+    background-color: #fff;
+  }
+  
+  .input1:focus {
+    outline-offset: -6px;
+    background-color: #d6f1ff;
+  }
+
+.input {
+    margin-top: 1rem;
+    border-radius: 8px;
+    outline: 2px solid #a2a6a8;
+    border: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #d6f1ff;
+    outline-offset: 3px;
+    padding: 5px;
+    padding-left: 10px;
+    transition: all 0.2s ease;
+    width: 200px;
+  }
+  
+  .input:hover {
+    background-color: #fff;
+  }
+  
+  .input:focus {
+    outline-offset: -6px;
+    background-color: #d6f1ff;
+  }
+  
+  .taxes-details{
+    display: flex;
+    flex-direction: column;
+    color: snow;
+    width: 100%;
+    align-items: center;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+
+  .taxes-details .texes {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 78%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .taxes-details h4:nth-of-type(2) {
+    position: relative;
+    left: 60px;
+  }
+
+  .taxes-details .inTaxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .inTaxes .contractor-none {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+  }
+
+  .inTaxes .amount {
+    margin-right: 20px;
+  }
+
+  .contractor-none h4:nth-of-type(2) {
+    position: relative;
+    left: 0px;
+  }
+
+  .regulary-head {
+    width: 85%;
+  }
+
+  .regulary-fees {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 15px;
+    margin-left: 30px;
+  }
+
+  .fees {
+    display: flex;
+    color: snow;
+    font-size: 20px;
+  }
+
+  .regulary {
+    text-transform: uppercase;
+    color: snow;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 200;
+    font-size: 13px;
+  }
+
+  .regulary-amount {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  section {
+    display: flex;
+    color: snow;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container1 {
+    border: 2px solid snow;
+    display: flex;
+    border-radius: 10px;
+    padding: 13px 17px;
+    width: 90%;
+    justify-content: space-between;
+  }
+
+  .container1 .con {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 2px solid snow;
+    padding-right: 115px;
+  }
+
+  .container1 .con:nth-of-type(4) {
+    border: none;
+    padding: 0;
+    position: relative;
+    right: 60px;
+  }
+
+  .container1 .con:nth-of-type(1) {
+    position: relative;
+    left: 60px;
+  }
+
+  .amnt {
+    border-top: 2px solid snow;
+    cursor: pointer;
+    margin-top: 5px;
+    padding-top: 10px;
+    width: 100%;
+  }
+
+  .computation {
+    border-bottom: 2px solid snow;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .container2 {
+    border: 2px solid snow;
+    width: 90%;
+    padding: 13px 17px;
+    margin-top: 15px;
+    border-radius: 10px;
+    line-height: 37px;
+  }
+
+  .payment::-webkit-scrollbar-thumb {
+    color: #d6f1ff;
+  }
+
+  .payment {
+    width: 400px;  
+    height: 35px;
+    font-size: 16px;
+    padding-left: 10px;
+    resize: none;
+    line-height: 33px;
+    max-height: 200px; 
+    outline: none;
+    border-radius: 4px;
+  }
+
+  .total-tax {
+    display: flex;
+    gap: 18px;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .input-tax {
+    height: 25px;
+    position: relative;
+    left: 250px;
+    margin-top: 30px;
+    border: none;
+    background-color: none;
+  }
+
+  .input-tax button .fa-paper-plane {
+    inset: none;
+  }
+
+  /* From Uiverse.io by Galahhad */ 
+.search-label {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #3D3D3D;
+  padding: 9px;
+  cursor: text;
+}
+
+.search-label:focus-within {
+  background: #464646;
+  border-color: gray;
+}
+
+.search-label input {
+  outline: none;
+  width: 100%;
+  border: none;
+  background: none;
+  color: snow
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+   .contract-amount {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 600px;
+   }
+
+   .cadc {
+    width: 900px;
+    font-size: 13px;
+   }
+
+   .waragud {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+   }
+
+   .calculation{
+    display: flex;
+    margin-right: 80px;
+    margin-bottom: 5px;
+    line-height: 35px;
+    justify-content: space-between;
+    width: 300px;
+    align-items: flex-start;
+   }
+
+   .tax-computation {
+    margin-right: 0px;
+    font-size: 13px;
+   }
+
+   .tax-formula {
+    margin-top: 37px;
+    font-size: 13px;
+   }
+
+   .underLine {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid white;
+   }
+
+   textarea {
+    border-radius: 6px;
+    font-weight: 700;
+    outline-offset: 2px solid white;
+    outline: none;
+    padding: 10px;
+    padding-left: 10px;
+    outline: 3px solid #a2a6a8;
+    line-height: 18px;
+    width: 400px;
+    overflow: auto;
+   }
+
+   #notes::-webkit-scrollbar {
+    display: none
+   }
+
+   #notes {
+    display: block !important;
+    visibility: visible !important;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+   .printedName {
+    display: none;
+   }
+
+   /* Drawer (Sidebar) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of viewport */
+  justify-content: space-between; /* Pushes the logout button to the bottom */
+  position: fixed;
+  top: 0;
+  left: -250px; /* Hidden initially */
+  width: 250px;
+  height: 100vh;
+  background: white;
+  color: white;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000; /* Ensure it's above other elements */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+/* Ensure list items are aligned */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  
+}
+
+.sidebar ul li {
+  padding: 15px;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.sidebar ul li a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners */
+  transition: background 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.sidebar ul li a:hover, button:hover {
+  background-color: #3D3D3D;
+  transition: all 0.15s;
+  color: wheat;
+}
+
+.logout-btn {
+  margin-top: auto; /* Pushes it to the bottom */
+  padding: 10px;
+  text-align: center;
+}
+
+.btn-logout {
+  background-color: rgb(68, 62, 62);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Drawer Icon (Button) */
+.drawer-icon {
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: rgb(3, 110, 197);
+  z-index: 1100; /* Ensure it's above everything */
+  position: fixed;
+}
+
+#drawer {
+  position: fixed;
+  left: -250px; /* Hidden by default */
+  transition: left 0.3s ease-in-out;
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+}
+
+#drawer.open {
+  left: 0px; /* Show when open */
+}
+
+/* Modal styles */
+.modal, .retrieve {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.entry {
+  flex-direction: column;
+  background-color: snow;
+  border-radius: 10px;
+  transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 10px;
+  background-color: #f2f9ff;
+}
+
+.entry h4 {
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.entry .name-etc {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.entry .date-names {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.entry .date-names .date {
+  font-size: 5px;
+  display: flex;
+  position: relative;
+  left: -30px;
+}
+
+.entry .for-com {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px;
+} 
+
+.entry .first-col, .entry .second-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-transform: capitalize;
+}
+
+.entry .other-fees {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.shadow {
+  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+              0 0  0 2px rgb(190, 190, 190),
+              0.3em 0.3em 1em rgba(0,0,0,0.3);
+ } 
+
+.search::placeholder {
+  color: #3D3D3D;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: black;
+  font-size: 28px;
+  font-weight: normal;
+  margin-top: -10px;
+  padding: 2px 11px;
+  border-radius: 3px;
+  border-top-right-radius: 10px;
+  margin-top: 0.5px;
+}
+
+.close:hover {
+  background-color: rgb(194, 0, 0);
+  color: white;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+   @media print {
+
+    @page {
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .print-btn {
+        display: none;
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Adjust text colors for better readability */
+    h4, h5, h3 {
+        color: black !important;
+    }
+
+    /* Ensure input fields and textareas show their values */
+    .input1, textarea, .input {
+        border: none;
+        background: transparent;
+        outline-offset: none;
+        outline: none;
+        border: none;
+        padding: 0;
+    }
+
+    .textBoxes {
+      margin-top: 15px;
+      width: px;
+    }
+
+    /* Remove unnecessary shadows or colors */
+    .container1, .container2 {
+        background: white;
+        font-weight: 900;
+        font-size: 13px;
+        border: 1px solid black;
+        z-index: 1000;
+    }
+
+    .client-details .details {
+      font-size: 16.6px;
+      gap: 5px;
+    }
+
+    .client-details .textBoxes {
+      margin-left: 150px;
+      gap:0px;
+      margin-top: -2px;
+    }
+
+    .client-details {
+      align-items: flex-start;
+    }
+
+    .date-applied input {
+      width: 97px;
+    }
+
+    .container2 {
+      height: 500px;
+    }
+
+    textarea {
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    #payment {
+      color: black;
+      position: relative;
+      left: 500px;
+      top: -800px;
+      z-index: 3000;
+    }
+
+  .sidebar{
+    display: none;
+   }
+
+   .drawer-icon{
+    display: none;
+   }
+
+   header {
+    margin-top: 25px;
+    border: 1px solid black;
+   }
+
+   .computation {
+    border-bottom: 2px solid black;
+   }
+
+   .taxes .yeah {
+    position: relative;
+    right: 20px;
+   }
+
+    .waragud {
+      z-index: 0;
+      height: 470px;
+    }
+
+    .contract-amount {
+      display: inline-block;
+      z-index: 0;
+    }
+    .calculation {
+      margin-bottom: 60px;
+    }
+    .applied {
+      line-height: 8px;
+    }
+
+    .amnt {
+      border-top: 2px solid black;
+    }
+
+    #payment {
+      padding: 0;
+    }
+
+    #saveButton {
+      display: none;
+    }
+    .printedName {
+      display: block;
+      display: flex;
+      flex-direction: column;
+      padding-top: 5px;
+      gap: 10px;
+      width: 650px;
+      margin-top: 25px;
+      z-index: 3000;
+    }
+
+    .correctedBy {
+      display: grid;
+      place-items: center;
+    }
+
+    .overPrintedName {
+      display: grid;
+      place-items: end;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .overPrintedName h4:nth-of-type(2) {
+      text-transform: capitalize;
+    }
+
+    .overPrintedName h3 {
+      border-bottom: 1px solid black;
+    }
+
+    .alignment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+}
