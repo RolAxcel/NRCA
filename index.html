@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>noetYetDecided</title>
-    <link rel="stylesheet" href="/main/style.css">
+    <title>City of Oroquieta - Admin Login</title>
+    
+    <link rel="stylesheet" href="./main/style.css"> <!-- ✅ Fixed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script type="module" src="main/script.js" defer></script>
 </head>
 <body>
     <form action="" class="container">
@@ -19,7 +19,7 @@
             <h1>CITY OF OROQUIETA</h1>
         </div>
         <div class="inputs">
-            <input type="text" placeholder="Username" name="username" id="username">
+            <input type="text" placeholder="Email" name="username" id="username" required>
 
             <div class="password-container">
                 <input type="password" placeholder="Password" name="password" id="password" required>
@@ -28,13 +28,77 @@
                 </button>
             </div>
 
-            <input type="button" name="submit" id="submit" value="ENTER">
+            <input type="submit" name="submit" id="submit" value="ENTER">
         </div>
     </form>
 
-    <script src="/main/toggle.js"></script>
-</body>
-</html>
+    <script src="./main/toggle.js"></script> <!-- ✅ Ensure this file exists -->
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6FbfRSvUFBa5gdoYViLbzlz1GB3EGYbw",
+            authDomain: "nrca-446be.firebaseapp.com",
+            projectId: "nrca-446be",
+            storageBucket: "nrca-446be.appspot.com",
+            messagingSenderId: "955938777275",
+            appId: "1:955938777275:web:0ca1a628ba8cd09ff9a19e",
+            measurementId: "G-SQSE3PFW9R"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Allowed admin emails
+        const allowedAdmins = ["citytreasurer2025@gmail.com"];
+
+        // Toggle password visibility
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const passwordField = document.getElementById("password");
+            const icon = this.querySelector("i");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        });
+
+        // Login function
+        document.getElementById("submit").addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (email === "" || password === "") {
+                alert("Please enter both email and password.");
+                return;
+            }
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log("Login successful:", user);
+
+                    if (allowedAdmins.includes(user.email)) {
+                        alert("Login successful! Welcome Admin.");
+                        window.location.href = "/option/option.html";
+                    } else {
+                        alert("Access Denied: You are not an admin.");
+                        auth.signOut();
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error during login:", error);
+                    alert("Login failed: " + error.message);
+                });
+        });
+    </script>
 </body>
 </html>

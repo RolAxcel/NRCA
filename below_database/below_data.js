@@ -74,7 +74,7 @@ function isValid(entry) {
 }
 
 // Function to Save Data to Firestore
-async function saveEntry() {
+async function saveEntries() {
     const entryData = getInputValues();
 
     if (!isValid(entryData)) {
@@ -336,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     // Existing event listeners
-    document.getElementById('saveButton')?.addEventListener('click', saveEntry);
+    document.getElementById('saveButtons')?.addEventListener('click', saveEntries);
     
     // Modify the modal trigger event listener
     const modalTriggerButton = document.getElementById('addedData');
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 export { 
-    saveEntry, 
+    saveEntries, 
     showModalWithEntries, 
     renderDataToForm, 
     getDefaultOtherFees 

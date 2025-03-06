@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Redirect when the button is clicked
     aboveButton.addEventListener("click", function () {
-        window.location.href = '/assesment_record/assessRecord.html'; // Change this to your target page
+        window.location.href = '/below_assessment_record/below_assess_record.html'; // Change this to your target page
     });
 });
 

@@ -2,6 +2,7 @@ document.getElementById("togglePassword").addEventListener("click", function (ev
     event.preventDefault(); // ✅ Prevents button from submitting the form
 
     const passwordField = document.getElementById("password");
+
     const icon = this.querySelector("i");
 
     if (passwordField.type === "password") {
