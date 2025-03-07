@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Automatic Computation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .results {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .result-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .result-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .result-value {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .calculation {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .range-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f4f8;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enhanced Automatic Computation</h1>
+        <div class="input-group">
+            <label for="inputField">Enter Value:</label>
+            <input type="text" id="inputField" placeholder="Example: 1,000">
+        </div>
+        
+        <div class="range-info">
+            <strong>Calculation Rules:</strong>
+            <ul>
+                <li>For values below 1,000: First/Third outputs = 17.16% of input, Sixth output = 100</li>
+                <li>For values 1,000 to 5,000: First/Third outputs = 171.60, Sixth output = 100</li>
+                <li>For values 5,001 to 9,999: First/Third outputs = 171.60, Sixth output = 200</li>
+                <li>For values 10,000 to 14,999: First/Third outputs = 171.60, Sixth output = 300</li>
+                <li>For values 15,000 to 20,000: First/Third outputs = 300.00, Sixth output = 300</li>
+                <li>For values above 20,000: First/Third outputs = 17.16% of input, Sixth output = 300</li>
+            </ul>
+        </div>
+        
+        <div class="results">
+            <div class="result-item">
+                <div class="result-label">First Output:</div>
+                <div class="result-value" id="firstOutput">0</div>
+                <div class="calculation" id="firstCalc"></div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Second Output:</div>
+                <div class="result-value" id="secondOutput">0.00</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Third Output:</div>
+                <div class="result-value" id="thirdOutput">0</div>
+                <div class="calculation">Same as First Output</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Fourth Output:</div>
+                <div class="result-value" id="fourthOutput">x70%</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Fifth Output:</div>
+                <div class="result-value" id="fifthOutput">0</div>
+                <div class="calculation" id="fifthCalc"></div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Sixth Output:</div>
+                <div class="result-value" id="sixthOutput">100</div>
+                <div class="calculation" id="sixthCalc">Fixed value</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Seventh Output:</div>
+                <div class="result-value" id="seventhOutput">0</div>
+                <div class="calculation" id="seventhCalc"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get input field element
+        const inputField = document.getElementById('inputField');
+        
+        // Add event listener for input changes
+        inputField.addEventListener('input', function() {
+            // Get the input value
+            let input = this.value;
+            
+            // Calculate and update outputs
+            calculateAndDisplay(input);
+        });
+        
+        // Function to calculate and display results
+        function calculateAndDisplay(input) {
+            // Remove commas and convert to number
+            const value = parseFloat(input.replace(/,/g, '')) || 0;
+            
+            let firstOutput, firstCalcText, sixthOutput, sixthCalcText;
+            
+            // Apply different rules based on the value range
+            if (value < 1000) {
+                // Calculate for values below 1,000
+                firstOutput = (value * 0.1716).toFixed(2);
+                firstCalcText = `${value} × 17.16% = ${firstOutput}`;
+                
+                sixthOutput = 100;
+                sixthCalcText = `Fixed value (below 1,000 range)`;
+            } 
+            else if (value >= 1000 && value <= 5000) {
+                // Fixed values for range 1,000 to 5,000
+                firstOutput = 171.60;
+                firstCalcText = `Value is between 1,000 and 5,000: Fixed at 171.60`;
+                
+                sixthOutput = 100;
+                sixthCalcText = `Fixed value (1,000-5,000 range)`;
+            } 
+            else if (value > 5000 && value <= 9999) {
+                // Fixed values for range 5,001 to 9,999
+                firstOutput = 171.60;
+                firstCalcText = `Value is between 5,001 and 9,999: Fixed at 171.60`;
+                
+                sixthOutput = 200;
+                sixthCalcText = `Fixed value (5,001-9,999 range)`;
+            }
+            else if (value >= 10000 && value <= 14999) {
+                // Values for range 10,000 to 14,999
+                firstOutput = 171.60;
+                firstCalcText = `Value is between 10,000 and 14,999: Fixed at 171.60`;
+                
+                sixthOutput = 300;
+                sixthCalcText = `Fixed value (10,000-14,999 range)`;
+            }
+            else if (value >= 15000 && value <= 20000) {
+                // Values for range 15,000 to 20,000
+                firstOutput = 300.00;
+                firstCalcText = `Value is between 15,000 and 20,000: Fixed at 300.00`;
+                
+                sixthOutput = 300;
+                sixthCalcText = `Fixed value (15,000-20,000 range)`;
+            }
+            else {
+                // Calculate for values above 20,000
+                firstOutput = (value * 0.1716).toFixed(2);
+                firstCalcText = `${value} × 17.16% = ${firstOutput}`;
+                
+                sixthOutput = 300;
+                sixthCalcText = `Fixed value (above 20,000 range)`;
+            }
+            
+            // Second output = 0.00 (fixed value)
+            const secondOutput = 0.00;
+            
+            // Third output = same as first
+            const thirdOutput = firstOutput;
+            
+            // Fourth output = x70% (fixed text)
+            const fourthOutput = "x70%";
+            
+            // Fifth output = third output × 70%
+            const fifthOutput = (parseFloat(thirdOutput) * 0.7).toFixed(2);
+            const fifthCalcText = `${thirdOutput} × 70% = ${fifthOutput}`;
+            
+            // Seventh output = fifth output + sixth output
+            const seventhOutput = (parseFloat(fifthOutput) + sixthOutput).toFixed(2);
+            const seventhCalcText = `${fifthOutput} + ${sixthOutput} = ${seventhOutput}`;
+            
+            // Update calculation explanations
+            document.getElementById('firstCalc').textContent = firstCalcText;
+            document.getElementById('fifthCalc').textContent = fifthCalcText;
+            document.getElementById('sixthCalc').textContent = sixthCalcText;
+            document.getElementById('seventhCalc').textContent = seventhCalcText;
+            
+            // Display results
+            document.getElementById('firstOutput').textContent = parseFloat(firstOutput).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('secondOutput').textContent = secondOutput.toFixed(2);
+            document.getElementById('thirdOutput').textContent = parseFloat(thirdOutput).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('fourthOutput').textContent = fourthOutput;
+            document.getElementById('fifthOutput').textContent = parseFloat(fifthOutput).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('sixthOutput').textContent = sixthOutput.toLocaleString();
+            document.getElementById('seventhOutput').textContent = parseFloat(seventhOutput).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+        
+        // Initialize with default value of 1,000
+        inputField.value = "1,000";
+        calculateAndDisplay("1,000");
+    </script>
+</body>
+</html>
